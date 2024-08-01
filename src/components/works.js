@@ -10,7 +10,7 @@ import img6 from "/public/images/Rectangle6.svg"
 export default function Works() {
     return (
         <div className="latest-works">
-            <h2>Latest Work</h2>
+            <h1>Latest Work</h1>
             <div className="latest-works__works">
                 <div className="latest-works__work">
                     <Image className="latest-works__img" src={img1}></Image>
