@@ -38,7 +38,7 @@ $font-family: "Epilogue", sans-serif;
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     width: 100%;
@@ -69,6 +69,10 @@ $font-family: "Epilogue", sans-serif;
 
     button {
         @include button();
+    }
+
+    &__left-side {
+        width: 620px;
     }
 }
 
