@@ -1,5 +1,41 @@
 $font-family: "Epilogue", sans-serif;
 
+@mixin button() {
+    padding: 30px 80px;
+    margin: 30px 0;
+
+    background-color: #2d2d2d;
+    color: white;
+
+    font-size: 28px;
+
+    &__left-side {
+        margin: 30px 70px;
+    }
+
+    &__right-side {
+        margin: 30px 110px;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 40px;
+
+    font-size: 20px;
+
+    &__right-side {
+        display: flex;
+
+        a {
+            padding: 0 10px;
+        }
+    }
+}
+
 .header {
     display: flex;
     justify-content: center;
@@ -8,9 +44,10 @@ $font-family: "Epilogue", sans-serif;
     width: 100%;
     height: fit-content;
 
-    margin: 40px 0;
+    padding: 20px 0;
+    margin-bottom: 50px;
 
-    font-size: 30px;
+    font-size: 25px;
 
     img {
         width: 450px;
@@ -20,39 +57,34 @@ $font-family: "Epilogue", sans-serif;
 
     h1 {
         margin: 0;
-        width: 200px;
 
         font-size: 72px;
     }
 
     p {
+        font-size: 16px;
         line-height: 35px;
-        letter-spacing: 3px;
-
-        width: 500px;
+        letter-spacing: 2px;
     }
 
     button {
-        padding: 30px 80px;
-        margin: 30px 0;
-
-        background-color: #2d2d2d;
-        color: white;
-
-        font-size: 32px;
-    }
-
-    &__left-side,
-    &__right-side {
-        margin: 30px 50px;
+        @include button();
     }
 }
 
+.logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 0;
+}
+
 .skills {
-    display: grid;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 30px;
+    margin: 90px 30px;
 
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -64,20 +96,21 @@ $font-family: "Epilogue", sans-serif;
 
     &__skill {
         display: flex;
-        padding: 30px 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 30px 50px;
 
         font-size: 25px;
+
+        p {
+            text-align: center;
+        }
     }
 
     &__icon {
         margin: 20px;
-        width: 100px;
-        height: fit-content;
-    }
-
-    &__text {
-        display: flex;
-        flex-direction: column;
     }
 }
 
@@ -89,11 +122,11 @@ $font-family: "Epilogue", sans-serif;
     margin: 60px;
     margin-bottom: 0;
 
-    font-size: 20px;
+    font-size: 25px;
 
     h1 {
         text-align: center;
-        margin: 0px;
+        margin-bottom: 40px;
     }
 
     &__works {
@@ -103,14 +136,11 @@ $font-family: "Epilogue", sans-serif;
 
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        row-gap: 40px;
 
-        padding: 50px;
-
-        font-size: 25px;
+        font-size: 35px;
 
         img {
-            width: 350px;
+            width: 450px;
             height: fit-content;
 
             margin: 0;
@@ -118,6 +148,128 @@ $font-family: "Epilogue", sans-serif;
 
         h5 {
             margin: 20px 0px;
+        }
+    }
+
+    &__work {
+        margin: 20px;
+    }
+}
+
+.testimonial {
+    margin: 60px 10px;
+    font-size: 25px;
+
+    h1 {
+        margin: 40px;
+        text-align: center;
+    }
+
+    &__cards {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        row-gap: 20px;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        width: 400px;
+        height: 375px;
+
+        padding: 40px;
+
+        background-color: #f3f3f3;
+
+        p {
+            font-weight: 500;
+        }
+    }
+
+    &__client {
+        display: flex;
+    }
+
+    &__client-pp {
+        margin: 20px;
+        margin-top: 0;
+    }
+
+    &__client-right {
+        display: grid;
+
+        h3 {
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin: 0;
+            font-weight: 300;
+        }
+    }
+}
+
+.footer {
+    padding: 30px 50px;
+
+    &__contact {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__container {
+        display: grid;
+        align-items: flex-start;
+
+        width: 570px;
+
+        p {
+            font-size: 20px;
+        }
+    }
+
+    &__social {
+        display: flex;
+    }
+
+    &__icon {
+        width: 45px;
+        height: auto;
+
+        margin-right: 50px;
+    }
+
+    &__form {
+        display: grid;
+        width: 570px;
+
+        input {
+            background-color: #f3f3f3;
+            border: 0;
+
+            margin-bottom: 20px;
+            height: 60px;
+        }
+
+        input::placeholder {
+            height: 60px;
+            padding: 10px;
+
+            font-size: 20px;
+        }
+    }
+
+    &__form-button {
+        button {
+            @include button();
+            font-size: 20px;
+            margin-bottom: 20px;
         }
     }
 }
