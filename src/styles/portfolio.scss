@@ -19,19 +19,85 @@ $font-family: "Epilogue", sans-serif;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: white;
 
-    padding: 20px 40px;
+    &__group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
 
-    font-size: 20px;
+        font-size: 20px;
+    }
 
     &__right-side {
         display: flex;
 
         a {
             padding: 0 10px;
+        }
+    }
+
+    &__menu-button {
+        display: none;
+    }
+
+    &__menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        background-color: white;
+        transition:
+            max-height 0.5s ease-in-out,
+            opacity 0.3s ease-in-out;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6);
+        }
+
+        li {
+            padding: 15px 20px;
+            background-color: white;
+            &:last-child {
+                padding-bottom: 40px;
+            }
+        }
+    }
+
+    &__menu.open {
+        max-height: 300px;
+        opacity: 1;
+    }
+
+    @media only screen and (max-width: 600px) {
+        &__group {
+            padding: 0px 30px;
+        }
+
+        &__right-side {
+            display: none;
+        }
+
+        &__menu-button {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+
+            svg {
+                width: 50px;
+                height: 35px;
+            }
+        }
+
+        &__menu {
+            display: block;
         }
     }
 }
@@ -72,27 +138,92 @@ $font-family: "Epilogue", sans-serif;
     }
 
     &__left-side {
+        display: flex;
+        flex-direction: column;
         width: 620px;
+    }
+
+    @media only screen and (max-width: 1200px) and (min-width: 900px) {
+        img {
+            width: 400px;
+        }
+
+        &__left-side {
+            width: 400px;
+        }
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            display: none;
+            width: 350px;
+        }
+
+        &__left-side {
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: 600px) and (min-width: 400px) {
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            display: none;
+            width: 350px;
+        }
+
+        &__left-side {
+            width: 400px;
+
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            display: none;
+            width: 350px;
+        }
+
+        &__left-side {
+            width: 350px;
+
+            align-items: center;
+            text-align: center;
+        }
     }
 }
 
 .logo {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     padding: 10px;
     margin: 20px 0;
+
+    @media only screen and (max-width: 600px) {
+        img {
+            transform: scale(0.7);
+        }
+    }
 }
 
 .skills {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    margin: 90px 30px;
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    row-gap: 40px;
+    margin: 60px 30px;
 
     h3 {
         margin: 0;
@@ -100,11 +231,14 @@ $font-family: "Epilogue", sans-serif;
 
     &__skill {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        padding: 30px 50px;
+        padding: 10px;
+        margin: 10px;
+        width: 250px;
 
         font-size: 25px;
 
@@ -116,6 +250,40 @@ $font-family: "Epilogue", sans-serif;
     &__icon {
         margin: 20px;
     }
+
+    @media only screen and (max-width: 1200px) and (min-width: 900px) {
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        &__skill {
+            padding: 10px;
+            margin: 0;
+            width: 250px;
+            font-size: 16px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) and (min-width: 400px) {
+        &__skill {
+            padding: 10px;
+            margin: 0;
+            width: 250px;
+            font-size: 16px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        &__skill {
+            padding: 10px;
+            margin: 0;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        img {
+            transform: scale(0.8);
+        }
+    }
 }
 
 .latest-works {
@@ -123,7 +291,7 @@ $font-family: "Epilogue", sans-serif;
     flex-direction: column;
     justify-content: center;
 
-    margin: 60px;
+    margin: 10px;
     margin-bottom: 0;
 
     font-size: 25px;
@@ -134,12 +302,10 @@ $font-family: "Epilogue", sans-serif;
     }
 
     &__works {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         justify-items: center;
-
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
 
         font-size: 35px;
 
@@ -158,10 +324,72 @@ $font-family: "Epilogue", sans-serif;
     &__work {
         margin: 20px;
     }
+
+    @media only screen and (max-width: 1200px) and (min-width: 900px) {
+        &__works {
+            img {
+                width: 310px;
+            }
+
+            h5 {
+                font-size: 32px;
+            }
+        }
+
+        &__text {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        &__works {
+            img {
+                width: 285px;
+            }
+
+            h5 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+        &__work {
+            margin: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        &__works {
+            img {
+                width: 285px;
+            }
+
+            h5 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+        &__work {
+            margin: 10px;
+        }
+    }
 }
 
 .testimonial {
-    margin: 60px 10px;
+    margin: 60px 0px;
     font-size: 25px;
 
     h1 {
@@ -170,13 +398,10 @@ $font-family: "Epilogue", sans-serif;
     }
 
     &__cards {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         justify-items: center;
-
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        row-gap: 20px;
     }
 
     &__card {
@@ -184,10 +409,11 @@ $font-family: "Epilogue", sans-serif;
         flex-direction: column;
         justify-content: space-between;
 
-        width: 400px;
-        height: 375px;
+        width: 350px;
+        height: 350px;
 
         padding: 40px;
+        margin: 10px;
 
         background-color: #f3f3f3;
 
@@ -217,13 +443,60 @@ $font-family: "Epilogue", sans-serif;
             font-weight: 300;
         }
     }
+
+    @media only screen and (max-width: 1200px) and (min-width: 900px) {
+        font-size: 22px;
+
+        &__card {
+            padding: 30px;
+            width: 280px;
+            height: 300px;
+        }
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        font-size: 18px;
+
+        h1 {
+            font-size: 48px;
+        }
+
+        &__card {
+            height: 250px;
+            width: 250px;
+
+            padding: 20px;
+            margin: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        font-size: 18px;
+
+        h1 {
+            font-size: 48px;
+        }
+
+        &__card {
+            height: 250px;
+            width: 250px;
+
+            padding: 20px;
+            margin: 10px;
+        }
+    }
 }
 
 .footer {
     padding: 30px 50px;
 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
     &__contact {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
 
@@ -251,7 +524,7 @@ $font-family: "Epilogue", sans-serif;
 
     &__form {
         display: grid;
-        width: 570px;
+        width: 525px;
 
         input {
             background-color: #f3f3f3;
@@ -274,6 +547,103 @@ $font-family: "Epilogue", sans-serif;
             @include button();
             font-size: 20px;
             margin-bottom: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 1200px) and (min-width: 900px) {
+        &__container {
+            width: 400px;
+
+            p {
+                font-size: 18px;
+                width: 400px;
+            }
+        }
+
+        &__icon {
+            margin-right: 30px;
+        }
+
+        &__form {
+            width: 400px;
+        }
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        justify-content: center;
+        align-items: center;
+
+        &__container {
+            width: 450px;
+        }
+
+        &__contact {
+            flex-direction: column;
+        }
+
+        &__social {
+            margin-top: 20px;
+        }
+
+        &__form {
+            width: 450px;
+            margin-top: 40px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) and (min-width: 400px) {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        &__container {
+            width: 350px;
+        }
+
+        &__contact {
+            flex-direction: column;
+        }
+
+        &__social {
+            width: 350px;
+            margin-top: 20px;
+        }
+
+        &__form {
+            width: 350px;
+            margin-top: 40px;
+        }
+
+        &__icon {
+            margin-right: 30px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        &__container {
+            width: 300px;
+        }
+
+        &__contact {
+            flex-direction: column;
+        }
+
+        &__social {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        &__form {
+            width: 300px;
+            margin-top: 40px;
+        }
+
+        &__icon {
+            margin-right: 25px;
         }
     }
 }

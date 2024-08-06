@@ -3,7 +3,7 @@ import React from 'react'
 import skill1 from "/public/images/skills1-large.svg"
 import skill2 from "/public/images/skills2-large.svg"
 import skill3 from "/public/images/skills3-large.svg"
-//import skill4 from "/public/images/Skills4.svg"
+import skill4 from "/public/images/skills4-large.svg"
 
 export default function Skills() {
     return (
@@ -23,13 +23,11 @@ export default function Skills() {
                 <h3>Art Direction</h3>
                 <p>This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com</p>
             </div>
-            {/*<div className="skills__skill">
+            <div className="skills__skill">
                 <Image className="skills__icon" src={skill4} alt="Skills Icon 4"></Image>
-                <div className="skills__text">
-                    <h3>UI/UX</h3>
-                    <p>This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com</p>
-                </div>
-            </div>*/}
+                <h3>UI/UX</h3>
+                <p>This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com</p>
+            </div>
         </div>
     )
 }
