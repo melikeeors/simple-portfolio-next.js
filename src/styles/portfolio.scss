@@ -1,5 +1,30 @@
 $font-family: "Epilogue", sans-serif;
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+
+@mixin blurFixed() {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(187, 187, 187);
+    filter: brightness(1) invert(0);
+}
+
 @mixin button() {
     padding: 30px 80px;
     margin: 30px 0;
@@ -19,15 +44,24 @@ $font-family: "Epilogue", sans-serif;
 }
 
 .navbar {
-    background-color: white;
+    height: fit-content;
 
     &__group {
+        @include blurFixed();
+
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 20px 40px;
 
         font-size: 20px;
+    }
+
+    &__group.open {
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom: 0px;
+        box-shadow: none;
     }
 
     &__right-side {
@@ -49,28 +83,26 @@ $font-family: "Epilogue", sans-serif;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        background-color: white;
         transition:
             max-height 0.5s ease-in-out,
-            opacity 0.3s ease-in-out;
+            opacity 0.1s ease-in-out;
 
         ul {
             list-style-type: none;
             padding: 0;
             margin: 0 0 20px 0;
-            box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6);
         }
 
         li {
             padding: 15px 20px;
-            background-color: white;
-            &:last-child {
-                padding-bottom: 40px;
-            }
         }
     }
 
     &__menu.open {
+        @include blurFixed();
+        background: rgb(205 205 205 / 20%);
+        z-index: 1000;
+
         max-height: 300px;
         opacity: 1;
     }
@@ -490,6 +522,17 @@ $font-family: "Epilogue", sans-serif;
 .footer {
     padding: 30px 50px;
 
+    form {
+        input {
+            background-color: #f3f3f3;
+            border: 0;
+
+            padding: 10px;
+            height: 60px;
+            font-size: 20px;
+        }
+    }
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -525,29 +568,46 @@ $font-family: "Epilogue", sans-serif;
     &__form {
         display: grid;
         width: 525px;
+    }
 
-        input {
-            background-color: #f3f3f3;
-            border: 0;
+    button {
+        @include button();
+        position: relative;
+        margin-bottom: 0;
+        font-size: 20px;
+    }
 
-            margin-bottom: 20px;
-            height: 60px;
-        }
+    button::after {
+        content: "Submit"; /* Buton içine eklenecek yazı */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Yazıyı ortalama */
+        color: white;
+        z-index: 1;
+    }
 
-        input::placeholder {
-            height: 60px;
-            padding: 10px;
+    button.submitted {
+        background-color: white;
 
-            font-size: 20px;
+        &::after {
+            content: "Sent"; /* Buton içine eklenecek yazı */
+            color: #2d2d2d;
         }
     }
 
-    &__form-button {
-        button {
-            @include button();
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
+    &__validations {
+        margin-bottom: 20px;
+        color: red;
+    }
+
+    &__confirmation {
+        display: none;
+    }
+
+    &__confirmation.submitted {
+        color: red;
+        display: block;
     }
 
     @media only screen and (max-width: 1200px) and (min-width: 900px) {

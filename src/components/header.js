@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from 'react'
 import headerImg from "/public/images/HeaderImage.svg"
 
 export default function Header() {

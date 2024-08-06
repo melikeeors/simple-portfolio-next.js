@@ -11,8 +11,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className='navbar'>
-      <div className="navbar__group">
+    <div className={'navbar'}>
+      <div className={`navbar__group ${isOpen ? 'open' : ''}`}>
         <div className='navbar__logo'>
           <h3>Logo</h3>
           <a className="navbar__menu-button" onClick={toggleMenu}>
