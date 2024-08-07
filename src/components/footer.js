@@ -19,7 +19,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer">
+    <div className="footer" id='contact'>
       <h1>Lets work together</h1>
 
       <div className="footer__contact">

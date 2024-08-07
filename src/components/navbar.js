@@ -21,17 +21,23 @@ export default function Navbar() {
         </div>
 
         <div className='navbar__right-side'>
-          <a>About</a>
-          <a>Work</a>
-          <a>Contact</a>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
 
       <div className={`navbar__menu ${isOpen ? 'open' : ''}`}>
         <ul>
-          <li>About</li>
-          <li>Work</li>
-          <li>Contact</li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#work">Work</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
       </div>
     </div>

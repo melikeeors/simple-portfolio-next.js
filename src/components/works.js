@@ -9,7 +9,7 @@ import img6 from "/public/images/Rectangle6.svg"
 
 export default function Works() {
     return (
-        <div className="latest-works">
+        <div className="latest-works" id="work">
             <h1>Latest work</h1>
             <div className="latest-works__works">
                 <div className="latest-works__work">
