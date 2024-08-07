@@ -41,7 +41,7 @@ export default function Logo() {
         }
       },
       {
-        breakpoint: 450,
+        breakpoint: 350,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
