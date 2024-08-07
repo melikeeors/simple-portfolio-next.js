@@ -21,7 +21,7 @@ export default function Logo() {
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: "linear",
-    initialSlide: 0,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1200,
@@ -34,9 +34,16 @@ export default function Logo() {
         }
       },
       {
-        breakpoint: 400,
+        breakpoint: 700,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 2,
           slidesToScroll: 1,
         }
       },
