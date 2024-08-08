@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { IoLogoDiscord } from "react-icons/io5";
 import { BiLogoFacebookSquare } from "react-icons/bi";
@@ -11,12 +11,44 @@ export default function Footer() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful }
+    formState: { errors, isSubmitSuccessful, dirtyFields },
+    watch,
+    trigger,
   } = useForm();
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = (data) => {
     console.log("Form Submitted", data);
+    setIsButtonDisabled(true);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   };
+
+  // Input alanlarını izle
+  const nameValue = watch("name");
+  const emailValue = watch("email");
+
+  // Doğrulamaya göre enable ya da disable buton
+  useEffect(() => {
+    const checkValidity = async () => {
+      // Her iki alanın da geçerliliğini kontrol et
+      const nameIsValid = await trigger("name");
+      const emailIsValid = await trigger("email");
+
+      // Eğer herhangi bir alan geçerli değilse butonu devre dışı bırak
+      setIsButtonDisabled(!(nameIsValid && emailIsValid));
+    };
+
+    // Sayfa yüklendiğinde direkt disable olmasını engelle
+    if (dirtyFields.name || dirtyFields.email) {
+      checkValidity();
+    }
+  }, [nameValue, emailValue, trigger, dirtyFields]);
 
   return (
     <div className="footer" id="contact">
@@ -57,7 +89,9 @@ export default function Footer() {
                 }
               })}
             />
-            <p className="footer__form-validation">{errors.name?.message}</p>
+            <p className="footer__form-validation">
+              {dirtyFields.name && errors.name?.message}
+            </p>
           </div>
 
           <div className="footer__form-input-container">
@@ -73,17 +107,24 @@ export default function Footer() {
                 }
               })}
             />
-            <p className="footer__form-validation">{errors.email?.message}</p>
+            <p className="footer__form-validation">
+              {dirtyFields.email && errors.email?.message}
+            </p>
           </div>
 
           <div className="footer-submit">
             <button
               className={`footer__form-button ${isSubmitSuccessful ? 'submitted' : ''}`}
               type="submit"
+              disabled={isButtonDisabled}
             >
-              Submit
+              {loading ? (
+                <div className="footer__loading-spinner"></div> 
+              ) : (
+                <span>{isSubmitSuccessful ? 'Sent' : 'Submit'}</span> 
+              )}
             </button>
-            <p className={`footer__form-confirmation ${isSubmitSuccessful ? 'submitted' : ''}`}>
+            <p className={`footer__form-confirmation ${(isSubmitSuccessful && !loading) ? 'submitted' : ''}`}>
               Thank you. We’ll get back to you soon.
             </p>
           </div>
