@@ -74,7 +74,7 @@ export default function Footer() {
         <form className="footer__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="footer__form-input-container">
             <input
-              className="footer__form-input"
+              className={`footer__form-input ${errors.name ? 'input-error' : ''}`}
               type="text"
               placeholder="Name"
               {...register("name", {
@@ -96,7 +96,7 @@ export default function Footer() {
 
           <div className="footer__form-input-container">
             <input
-              className="footer__form-input"
+              className={`footer__form-input ${errors.email ? 'input-error' : ''}`}
               type="email"
               placeholder="Email"
               {...register("email", {

@@ -248,19 +248,17 @@ $font-family: "Epilogue", sans-serif;
     }
 }
 
-.logo {
+.logo-slider {
     width: 100%;
 
     h1 {
         text-align: center;
     }
 
-    ul {
-        display: none !important;
-    }
-
-    img {
-        margin: 0 100px;
+    .slider-container {
+        img {
+            margin: 0 100px;
+        }
     }
 
     .slick-track {
@@ -269,13 +267,34 @@ $font-family: "Epilogue", sans-serif;
         justify-content: center;
     }
 
+    .logo-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    @media only screen and (max-width: 900px) and (min-width: 600px) {
+        .slider-container {
+            img {
+                transform: scale(0.9);
+            }
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        .slider-container {
+            display: none;
+        }
+    }
+
     @media only screen and (max-width: 600px) {
         img {
             transform: scale(0.8);
         }
 
-        ul {
-            display: block !important;
+        .logo-container {
+            display: none;
         }
     }
 }
@@ -451,7 +470,7 @@ $font-family: "Epilogue", sans-serif;
 }
 
 .testimonial {
-    margin: 60px 30px;
+    margin: 60px 0px;
     font-size: 25px;
     width: 100%;
 
@@ -462,10 +481,6 @@ $font-family: "Epilogue", sans-serif;
 
         margin: 40px;
         text-align: center;
-    }
-
-    ul {
-        display: none !important;
     }
 
     .slick-track {
@@ -491,7 +506,7 @@ $font-family: "Epilogue", sans-serif;
         height: 350px;
 
         padding: 40px;
-        margin: 0 10px;
+        margin: 10px 30px;
 
         background-color: #f3f3f3;
 
@@ -524,10 +539,6 @@ $font-family: "Epilogue", sans-serif;
 
     @media only screen and (max-width: 1440px) and (min-width: 1200px) {
         margin: 60px 0px;
-
-        &__card {
-            transform: scale(0.8);
-        }
     }
 
     @media only screen and (max-width: 1200px) and (min-width: 900px) {
@@ -538,8 +549,6 @@ $font-family: "Epilogue", sans-serif;
             padding: 30px;
             width: 280px;
             height: 300px;
-
-            transform: scale(0.75);
         }
     }
 
@@ -551,15 +560,18 @@ $font-family: "Epilogue", sans-serif;
             font-size: 48px;
         }
 
-        ul {
-            display: block !important;
-        }
-
         &__card {
             height: 250px;
-            width: 325px;
+            width: 250px;
 
             padding: 20px;
+            margin: 10px;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        .slider-container {
+            display: none;
         }
     }
 
@@ -571,29 +583,31 @@ $font-family: "Epilogue", sans-serif;
             font-size: 48px;
         }
 
-        ul {
-            display: block !important;
-        }
-
         &__card {
             height: 250px;
             width: 250px;
 
             padding: 10px;
+            margin: 0;
+        }
+
+        &__container {
+            display: none;
         }
     }
 
     @media only screen and (max-width: 540px) and (min-width: 400px) {
         margin: 60px 0px;
 
-        ul {
-            display: block !important;
-        }
-
         &__card {
             height: 200px;
             width: 100%;
             padding: 10px;
+            margin: 0;
+        }
+
+        &__container {
+            display: none;
         }
     }
 
@@ -605,14 +619,15 @@ $font-family: "Epilogue", sans-serif;
             font-size: 32px;
         }
 
-        ul {
-            display: block !important;
-        }
-
         &__card {
             height: 250px;
             width: 95%;
             padding: 20px;
+            margin: 0;
+        }
+
+        &__container {
+            display: none;
         }
     }
 
@@ -620,16 +635,16 @@ $font-family: "Epilogue", sans-serif;
         margin: 60px 0px;
         font-size: 16px;
 
-        ul {
-            display: block !important;
-        }
-
         &__card {
             height: 250px;
             width: 250px;
 
             margin: 0 20px;
             padding: 20px;
+        }
+
+        &__container {
+            display: none;
         }
     }
 }
@@ -679,11 +694,15 @@ $font-family: "Epilogue", sans-serif;
 
         &-input {
             background-color: #f3f3f3;
-            border: 2px solid red;
+            border: 2px solid #f3f3f3;
             padding: 10px;
             width: 90%;
             height: 60px;
             font-size: 20px;
+        }
+
+        .input-error {
+            border-color: red;
         }
 
         &-validation {
@@ -710,7 +729,7 @@ $font-family: "Epilogue", sans-serif;
         margin-bottom: 5px;
         font-size: 20px;
         transition: background-color 0.3s ease;
-        background-color: #2d2d2d; 
+        background-color: #2d2d2d;
         color: white;
         display: flex;
         align-items: center;

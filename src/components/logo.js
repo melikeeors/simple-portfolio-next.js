@@ -52,24 +52,34 @@ export default function Logo() {
 
   return (
     <div className="logo" id="about">
-      <div className="slider-container">
-        <Slider {...settings}>
-          <div>
-            <Image src={Google} alt="Google Logo"></Image>
-          </div>
-          <div>
-            <Image src={Nike} alt="Nike Logo"></Image>
-          </div>
-          <div>
-            <Image src={Samsung} alt="Samsung Logo"></Image>
-          </div>
-          <div>
-            <Image src={Apple} alt="Apple Logo"></Image>
-          </div>
-          <div>
-            <Image src={Adidas} alt="Adidas Logo"></Image>
-          </div>
-        </Slider>
+      <div className="logo-slider">
+        <div className="slider-container">
+          <Slider {...settings}>
+            <div>
+              <Image src={Google} alt="Google Logo"></Image>
+            </div>
+            <div>
+              <Image src={Nike} alt="Nike Logo"></Image>
+            </div>
+            <div>
+              <Image src={Samsung} alt="Samsung Logo"></Image>
+            </div>
+            <div>
+              <Image src={Apple} alt="Apple Logo"></Image>
+            </div>
+            <div>
+              <Image src={Adidas} alt="Adidas Logo"></Image>
+            </div>
+          </Slider>
+        </div>
+
+        <div className="logo-container">
+          <Image src={Google} alt="Google Logo"></Image>
+          <Image src={Nike} alt="Nike Logo"></Image>
+          <Image src={Samsung} alt="Samsung Logo"></Image>
+          <Image src={Apple} alt="Apple Logo"></Image>
+          <Image src={Adidas} alt="Adidas Logo"></Image>
+        </div>
       </div>
     </div>
   );
